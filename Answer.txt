@@ -1,1 +1,280 @@
+Perfect 🔥 — this is a **complete DevOps exam question**
+I’ll give you **TOP → BOTTOM step-by-step with code** (copy-paste ready 💯)
+
+---
+
+# 🎯 OVERALL FLOW
+
+```text
+HTML → GitHub → Clone → Update → Docker → Jenkins → Kubernetes → Browser
+```
+
+---
+
+# 🟢 STEP 1: CREATE HTML WEBPAGE
+
+👉 Create file: `index.html`
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Department</title>
+</head>
+<body>
+
+<header>
+    <h1>ABC University</h1>
+    <p>Leading institution providing quality education.</p>
+    <h3>Administrative Heads</h3>
+    <p>Dean: Dr. John | HOD: Dr. Smith</p>
+</header>
+
+<hr>
+
+<section>
+    <h2>About Department</h2>
+    <p>The Computer Science department focuses on modern technologies and innovation.</p>
+</section>
+
+<section>
+    <h2>Courses Offered</h2>
+    <ul>
+        <li>Data Structures - Core concepts of programming</li>
+        <li>AI - Introduction to Artificial Intelligence</li>
+        <li>Web Development - HTML, CSS, JS</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Faculty</h2>
+    <p>Dr. A - Professor - AI</p>
+    <p>Dr. B - Associate Professor - Web Dev</p>
+</section>
+
+<section>
+    <h2>Contact</h2>
+    <p>Address: ABC University</p>
+    <p>Phone: 1234567890</p>
+    <p>Email: dept@abc.com</p>
+</section>
+
+<footer>
+    <p>© 2026 ABC University</p>
+</footer>
+
+</body>
+</html>
+```
+
+---
+
+# 🟢 STEP 2: PUSH TO GITHUB
+
+```bash
+git init
+git add .
+git commit -m "initial html"
+git branch -M main
+git remote add origin <your-repo-link>
+git push -u origin main
+```
+
+---
+
+# 🟢 STEP 3: CLONE & UPDATE
+
+```bash
+git clone <repo-link>
+cd repo-name
+```
+
+👉 Edit HTML (add one line)
+
+```html
+<p>Updated Department Info</p>
+```
+
+```bash
+git add .
+git commit -m "updated page"
+git push
+```
+
+---
+
+# 🟢 STEP 4: DOCKERIZE APP
+
+👉 Create `Dockerfile`
+
+```dockerfile
+FROM nginx:alpine
+
+COPY . /usr/share/nginx/html
+
+EXPOSE 80
+```
+
+---
+
+## 🔹 BUILD & RUN
+
+```bash
+docker build -t university-app .
+docker run -p 8080:80 university-app
+```
+
+👉 Open:
+
+```
+http://localhost:8080
+```
+
+---
+
+# 🟢 STEP 5: PUSH TO DOCKER HUB
+
+```bash
+docker login
+docker tag university-app <username>/university-app:v1
+docker push <username>/university-app:v1
+```
+
+---
+
+# 🟢 STEP 6: JENKINS PIPELINE
+
+👉 Create Pipeline → paste:
+
+```groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: '<repo-link>'
+            }
+        }
+
+        stage('Build Docker') {
+            steps {
+                bat 'docker build -t university-app .'
+            }
+        }
+
+        stage('Push DockerHub') {
+            steps {
+                bat 'docker push <username>/university-app:v1'
+            }
+        }
+    }
+}
+```
+
+👉 Click **Build Now**
+
+---
+
+# 🟢 STEP 7: KUBERNETES DEPLOYMENT
+
+👉 `deployment.yaml`
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: university-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: university-app
+  template:
+    metadata:
+      labels:
+        app: university-app
+    spec:
+      containers:
+      - name: university-app
+        image: <username>/university-app:v1
+        ports:
+        - containerPort: 80
+```
+
+---
+
+# 🟢 STEP 8: SERVICE
+
+👉 `service.yaml`
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: university-service
+spec:
+  type: NodePort
+  selector:
+    app: university-app
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30020
+```
+
+---
+
+# 🟢 STEP 9: DEPLOY
+
+```bash
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+```
+
+---
+
+# 🟢 STEP 10: RUN
+
+```bash
+kubectl port-forward service/university-service 8080:80
+```
+
+👉 Open:
+
+```
+http://localhost:8080
+```
+
+---
+
+# 📸 SCREENSHOTS TO TAKE
+
+1. HTML page
+2. GitHub repo
+3. Git clone/update
+4. Docker build/run
+5. Jenkins pipeline success
+6. kubectl get pods
+7. Browser output
+
+---
+
+# 🗣️ VIVA ANSWER
+
+👉 *“I developed a static HTML webpage, version-controlled it using GitHub, containerized it using Docker, automated the build using Jenkins, and deployed it using Kubernetes.”*
+
+---
+
+# 💯 FINAL TIP
+
+👉 Even simple HTML = full marks
+👉 Focus on pipeline
+
+---
+
+If you want:
+
+👉 say **"super short exam steps"**
+I’ll give ultra-fast memory version 🚀
 
